@@ -27,3 +27,10 @@ make
 ### Multinode
 mpirun --allow-run-as-root --map-by ppr:4:node --bind-to core -np 8 --report-bindings -q -mca btl_tcp_if_include enP5p9s0 --hostfile /etc/nvidia-imex/nodes_config.cfg  ./nvbandwidth -p multinode
 ```
+
+#### GDR Copy
+
+[Github-Link](https://github.com/NVIDIA/gdrcopy)
+
+GDRCopy is a low-latency GPU memory copy library based on GPUDirect RDMA technology that allows the CPU to directly map and access GPU memory. GDRCopy also provides optimized copy APIs and is widely used in high-performance communication runtimes like UCX, OpenMPI, MVAPICH, and NVSHMEM.
+![gdrcpy](https://d29g4g2dyqv443.cloudfront.net/sites/default/files/akamai/magnum-io-cudaMemcpy-vs-GDRCopy.svg)
