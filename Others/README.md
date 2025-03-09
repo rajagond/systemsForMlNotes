@@ -13,6 +13,15 @@ sudo apt-get install libmkl-dev -y; conda install mkl -y
 pip3 install -r requirements-common.txt; pip3 install -r requirements-cuda.txt ; pip3 install -r requirements-dev.txt; pip3 install -e .; python3 setup.py develop;
 huggingface-cli login # token
 ```
+### MSCCLPP NVLS Test setup
+```bash
+sudo apt-get install libnuma-dev # libnuma
+git clone https://github.com/microsoft/mscclpp.git
+mkdir -p mscclpp/build && cd mscclpp/build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make -j all
+mpirun --bind-to numa -np 8 ./test/nvls_test -b 3m -e 48m -G 100 -n 100 -w 20 -f 2 -k 5 > debug.txt
+```
 
 ### NVBandwidth setup
 
